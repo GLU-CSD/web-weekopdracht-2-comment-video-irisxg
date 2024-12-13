@@ -6,3 +6,25 @@
 3. Navigeer in je browser naar de het `install.php` script
 
 ```Voorbeeld: http://localhost/reacties/install.php```
+
+
+
+# Reactiesysteem voor YouTube Video - PHP
+
+## Beschrijving
+Dit script stelt gebruikers in staat om te reageren op een video door hun naam, e-mail en bericht in te voeren. Reacties worden opgeslagen in een MySQL-database en weergegeven op dezelfde pagina. Het script behandelt ook sessies voor succes- en foutmeldingen van gebruikersfeedback.
+
+## Voorwaarden
+- Een MySQL-database (`youtube-clone` in het script) met tabellen `reactions` (id, video_id, name, email, message, date_added) en `videos` (id, title, url).
+- PHP-versie 7.4 of hoger.
+- Configureer de databaseverbinding in `config.php` met de juiste details (host, gebruiker, wachtwoord, dbnaam).
+
+## Installatie
+1. Cloneer of download het script.
+2. Configureer je databaseverbinding in `config.php`:
+   ```php
+   <?php
+   $dbhost = "localhost";
+   $dbuser = "root";
+   $dbpass = "wachtwoord";
+   $dbname = "youtube-clone";
