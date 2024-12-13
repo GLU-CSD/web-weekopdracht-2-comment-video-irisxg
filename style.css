@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 5px; /* Nog verder verminderd voor strakkere hoofdcontainer ruimte */
+    background-color: #333;
+    color: #ffff;
+}
+
+h3, h2 {
+    margin-bottom: 4px; /* Nog minder ruimte tussen headers */
+}
+
+iframe {
+    display: block;
+    margin: 20px auto;
+    width: 100%; /* Breidt de breedte uit naar de volledige breedte van het scherm */
+    height: auto; /* Hoogte past zich automatisch aan op basis van breedte */
+    aspect-ratio: 16 / 9; /* Voor een standaard 16:9-videoverhouding */
+}
+
+
+.container-with-video {
+    z-index: 1; /* Zet container hoger dan video */
+}
+
+
+
+.form-container {
+    background-color: #fff;
+    padding: 5px; /* Nog strakker */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 5px auto; /* Nog minder marge rondom het formulier */
+    display: flex;
+    flex-direction: column; /* Verplicht elementen onder elkaar */
+}
+
+form label {
+    display: block;
+    margin-bottom: 4px; /* Nog strakker */
+    font-weight: bold;
+}
+
+form input, form textarea, form button {
+    width: 100%;
+    padding: 5px; /* Nog strakker */
+    margin-bottom: 4px; /* Nog strakker */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form input[type="submit"] {
+    background-color: #ff0000;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+form input[type="submit"]:hover {
+    background-color: #ff0000;
+}
+
+.result-message {
+    max-width: 400px;
+    margin: 5px auto; /* Nog minder marge rondom het resultaatbericht */
+    padding: 5px; /* Nog strakker */
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+}
+
+.reactions {
+    max-width: 400px;
+    margin: 5px auto; /* Nog minder marge rondom reacties */
+    background-color: #fff;
+    padding: 5px; /* Nog strakker */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.reactions p {
+    margin-bottom: 4px; /* Nog minder marge onder elke reactie */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px; /* Nog minder padding onder elke reactie */
+}
+
+.reactions strong {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 2px; /* Nog minder marge onder de naam/sterkte */
+} 

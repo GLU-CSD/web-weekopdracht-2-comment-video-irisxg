@@ -23,18 +23,25 @@ class Reactions
                 $array['error'][] = "Message not set in array";
             }
 
+            if (isset($postArray['id']) && $postArray['id'] != '') {
+                $video_id = stripslashes(trim($postArray['id']));
+
+            }else{
+                $array['error'][] = "Message not set in array";
+            }
+
             if (empty($array['error'])) {
 
-                $srqry = $con->prepare("INSERT INTO reactions (name,email,message) VALUES (?,?,?);");
+                $srqry = $con->prepare("INSERT INTO reactions (video_id,name,email,message) VALUES (?,?,?,?);");
                 if ($srqry === false) {
                     prettyDump( mysqli_error($con) );
                 }
                 
-                $srqry->bind_param('sss',$name,$email,$message);
+                $srqry->bind_param('ssss',$video_id,$name,$email,$message);
                 if ($srqry->execute() === false) {
                     prettyDump( mysqli_error($con) );
                 }else{
-                    $array['succes'] = "Reaction save succesfully";
+                    $array['succes'] = "We hebben je bericht opgeslagen";
                 }
             
                 $srqry->close();
@@ -47,18 +54,19 @@ class Reactions
     static function getReactions(){
         global $con;
         $array = [];
-        $grqry = $con->prepare("SELECT id,name,email FROM reactions;");
+        $grqry = $con->prepare("SELECT id,name,email,message FROM reactions ORDER BY date_added DESC;");
         if($grqry === false) {
             prettyDump( mysqli_error($con) );
         } else{
-            $grqry->bind_result($id,$name,$email);
+            $grqry->bind_result($id,$name,$email,$message);
             if($grqry->execute()){
                 $grqry->store_result();
                 while($grqry->fetch()){
                     $array[] = [
                         'id' => $id,
                         'name' => $name,
-                        'email'=> $email
+                        'email'=> $email,
+                        'message' => $message
                     ];
                 }
             }
@@ -66,5 +74,30 @@ class Reactions
         }
         return $array;
     }
+
+    static function getVideos(){
+        global $con;
+        $array = [];
+        $grqry = $con->prepare("SELECT id,title,url FROM videos;");
+        if($grqry === false) {
+            prettyDump( mysqli_error($con) );
+        } else{
+            $grqry->bind_result($id,$title,$url,);
+            if($grqry->execute()){
+                $grqry->store_result();
+                while($grqry->fetch()){
+                    $array[] = [
+                        'id' => $id,
+                        'title' => $title,
+                        'url'=> $url,
+                    ];
+                }
+            }
+            $grqry->close();
+        }
+        return $array;
+    }
+
 }
+
 

@@ -7,7 +7,7 @@ session_start();
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "root";
-$dbname = "youtube-test";
+$dbname = "youtube-clone";
 
 /**
  * Voor de Windows gebruikers;
